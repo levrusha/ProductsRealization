@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_144">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/charsets.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/deploy.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/javaws.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/jce.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/jfr.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/jfxswt.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/jsse.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/management-agent.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/plugin.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/resources.jar"/>
-	<classpathentry kind="lib" path="F:/Java/jdk1.8.0_144/jre/lib/rt.jar"/>
-	<classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/poi/poi/4.0.0/poi-4.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.10/commons-codec-1.10.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-collections4/4.2/commons-collections4-4.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/poi/poi-ooxml/4.0.0/poi-ooxml-4.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/poi/poi-ooxml-schemas/4.0.0/poi-ooxml-schemas-4.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/xmlbeans/xmlbeans/3.0.1/xmlbeans-3.0.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-compress/1.18/commons-compress-1.18.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/github/virtuald/curvesapi/1.04/curvesapi-1.04.jar"/>
 </classpath>
