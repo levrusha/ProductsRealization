@@ -31,6 +31,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -66,6 +68,25 @@ public class Replacement {
 			              String text = r.getText(0);
 			              if (text != null && text.contains(find_text)) {
 			                text = text.replace(find_text, textfield.getText());
+			                r.setText(text,0);
+			              }
+			            }
+			         }
+			      }
+			   }
+			}
+	}
+	
+	public void textReplaceInTableForCombo (XWPFDocument document, String find_text, JComboBox combobox)
+	{
+		for (XWPFTable tbl : document.getTables()) {
+			   for (XWPFTableRow row : tbl.getRows()) {
+			      for (XWPFTableCell cell : row.getTableCells()) {
+			         for (XWPFParagraph p : cell.getParagraphs()) {
+			            for (XWPFRun r : p.getRuns()) {
+			              String text = r.getText(0);
+			              if (text != null && text.contains(find_text)) {
+			                text = text.replace(find_text, (String)combobox.getSelectedItem());
 			                r.setText(text,0);
 			              }
 			            }
