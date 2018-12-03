@@ -136,9 +136,7 @@ public class StartForm extends JFrame {
 				replacement.textReplaceInTable(document, "Cheking_account_pokupatel", Account_pokupatel_textField);
 				replacement.textReplaceInTable(document, "BIK_pokupatel", BIK_pokupatel_textField);
 				replacement.textReplaceInTable(document, "Nomer_dogovora" , Nomer_dogovora_textField);
-				System.out.println(Nomer_dogovora_textField.getText());
 				replacement.textReplaceInTable(document, "Date_dogovor" , Date_dogovor_textField);
-				System.out.println(Date_dogovor_textField.getText());
 				replacement.textReplaceInTable(document, "OKPO_Pok" , OKPO_pokupatel_textField);
 				replacement.textReplaceInTableForCombo(document, "Name_tovar_1" , name_tov1_comboBox);
 				replacement.textReplaceInTableForCombo(document, "Name_tovar_2" , name_tov2_comboBox);
@@ -150,11 +148,92 @@ public class StartForm extends JFrame {
 				replacement.textReplaceInTable(document, "Kol_tov_3" , kol3_textField);
 				replacement.textReplaceInTable(document, "Kol_tov_4" , kol4_textField);
 				replacement.textReplaceInTable(document, "Kol_tov_5" , kol5_textField);
-				replacement.textReplaceInTable(document, "Price_tov_1" , price_tov1_textField);
+				replacement.textReplaceInTable(document, "PriceTov1" , price_tov1_textField);
 				replacement.textReplaceInTable(document, "Price_tov_2" , price_tov2_textField);
 				replacement.textReplaceInTable(document, "Price_tov_3" , price_tov3_textField);
 				replacement.textReplaceInTable(document, "Price_tov_4" , price_tov4_textField);
 				replacement.textReplaceInTable(document, "Price_tov_5" , price_tov5_textField);
+				Calculations calc = new Calculations();
+				
+				if (name_tov1_comboBox.getSelectedItem()!=" ") {
+				String summ_no_nds = "0";
+				replacement.textReplaceInTableForVariables(document, "Total_tov_1-Nds" ,calc.calculateEachSumm(kol1_textField, price_tov1_textField, summ_no_nds));
+				String nds = "0";
+				replacement.textReplaceInTableForVariables(document, "NDS_tov_1" ,calc.calculateEachNDS(kol1_textField, price_tov1_textField, nds));
+				String summ_with_nds = "0";
+				replacement.textReplaceInTableForVariables(document, "Total_tov_1+NDS" ,calc.calculateEachSummWithNDS(kol1_textField, price_tov1_textField, summ_with_nds));
+				} else {
+					String summ_no_nds=" ";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_1-NDS" ,summ_no_nds);
+					String nds = " ";
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_1" ,nds);
+					String summ_with_nds = " ";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_1+NDS" ,summ_with_nds);
+				}
+				
+				if (name_tov2_comboBox.getSelectedItem()!=" ") {
+					String summ_no_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_2-NDS" ,calc.calculateEachSumm(kol2_textField, price_tov2_textField, summ_no_nds));
+					String nds = "0";
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_2" ,calc.calculateEachNDS(kol2_textField, price_tov2_textField, nds));
+					String summ_with_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_2+NDS" ,calc.calculateEachSummWithNDS(kol2_textField, price_tov2_textField, summ_with_nds));
+					} else {
+						String summ_no_nds=" ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_2-NDS" ,summ_no_nds);
+						String nds = " ";
+						replacement.textReplaceInTableForVariables(document, "NDS_tov_2" ,nds);
+						String summ_with_nds = " ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_2+NDS" ,summ_with_nds);
+					}
+				
+				if (name_tov3_comboBox.getSelectedItem()!=" ") {
+					String summ_no_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_3-NDS" ,calc.calculateEachSumm(kol3_textField, price_tov3_textField, summ_no_nds));
+					String nds = "0";
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_3" ,calc.calculateEachNDS(kol3_textField, price_tov3_textField, nds));
+					String summ_with_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_3+NDS" ,calc.calculateEachSummWithNDS(kol3_textField, price_tov3_textField, summ_with_nds));
+					} else {
+						String summ_no_nds=" ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_3-NDS" ,summ_no_nds);
+						String nds = " ";
+						replacement.textReplaceInTableForVariables(document, "NDS_tov_3" ,nds);
+						String summ_with_nds = " ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_3+NDS" ,summ_with_nds);
+					}
+				
+				if (name_tov4_comboBox.getSelectedItem()!=" ") {
+					String summ_no_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_4-NDS" ,calc.calculateEachSumm(kol4_textField, price_tov4_textField, summ_no_nds));
+					String nds = "0";
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_4" ,calc.calculateEachNDS(kol1_textField, price_tov4_textField, nds));
+					String summ_with_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_4+NDS" ,calc.calculateEachSummWithNDS(kol4_textField, price_tov4_textField, summ_with_nds));
+					} else {
+						String summ_no_nds=" ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_4-NDS" ,summ_no_nds);
+						String nds = " ";
+						replacement.textReplaceInTableForVariables(document, "NDS_tov_4" ,nds);
+						String summ_with_nds = " ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_4+NDS" ,summ_with_nds);
+					}
+				
+				if (name_tov5_comboBox.getSelectedItem()!=" ") {
+					String summ_no_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_5-NDS" ,calc.calculateEachSumm(kol5_textField, price_tov5_textField, summ_no_nds));
+					String nds = "0";
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_5" ,calc.calculateEachNDS(kol5_textField, price_tov5_textField, nds));
+					String summ_with_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_5+NDS" ,calc.calculateEachSummWithNDS(kol5_textField, price_tov5_textField, summ_with_nds));
+					} else {
+						String summ_no_nds=" ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_5-NDS" ,summ_no_nds);
+						String nds = " ";
+						replacement.textReplaceInTableForVariables(document, "NDS_tov_5" ,nds);
+						String summ_with_nds = " ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_5+NDS" ,summ_with_nds);
+					}
 				/*replacement.textReplaceInTable(document, "Total_tov_1-NDS" , textField);
 				replacement.textReplaceInTable(document, "Total_tov_2-NDS" , textField);
 				replacement.textReplaceInTable(document, "Total_tov_3-NDS" , textField);
@@ -187,7 +266,7 @@ public class StartForm extends JFrame {
 		});
 		generate_Button.setBounds(373, 338, 235, 33);
 		contentPane.add(generate_Button);
-		
+				
 		Address_pokupatel_textField = new JTextField();
 		Address_pokupatel_textField.setText("г. Уфа, ул. Космонавтов, 15");
 		Address_pokupatel_textField.setBounds(141, 164, 296, 20);
@@ -279,27 +358,27 @@ public class StartForm extends JFrame {
 		contentPane.add(OKPO_pokupatel_textField);
 		
 		name_tov1_comboBox = new JComboBox<String>();
-		name_tov1_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"-", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
+		name_tov1_comboBox.setModel(new DefaultComboBoxModel(new String[] {" ", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
 		name_tov1_comboBox.setBounds(546, 133, 114, 20);
 		contentPane.add(name_tov1_comboBox);
 		
 		name_tov2_comboBox = new JComboBox<String>();
-		name_tov2_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"-", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
+		name_tov2_comboBox.setModel(new DefaultComboBoxModel(new String[] {" ", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
 		name_tov2_comboBox.setBounds(546, 164, 114, 20);
 		contentPane.add(name_tov2_comboBox);
 		
 		name_tov3_comboBox = new JComboBox<String>();
-		name_tov3_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"-", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
+		name_tov3_comboBox.setModel(new DefaultComboBoxModel(new String[] {" ", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
 		name_tov3_comboBox.setBounds(546, 195, 114, 20);
 		contentPane.add(name_tov3_comboBox);
 		
 		name_tov4_comboBox = new JComboBox<String>();
-		name_tov4_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"-", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
+		name_tov4_comboBox.setModel(new DefaultComboBoxModel(new String[] {" ", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
 		name_tov4_comboBox.setBounds(546, 226, 114, 20);
 		contentPane.add(name_tov4_comboBox);
 		
 		name_tov5_comboBox = new JComboBox<String>();
-		name_tov5_comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"-", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
+		name_tov5_comboBox.setModel(new DefaultComboBoxModel(new String[] {" ", "Диван Monro", "Диван Kernik", "Диван Grog", "Кресло Voyage", "Кресло Merry"}));
 		name_tov5_comboBox.setBounds(546, 257, 114, 20);
 		contentPane.add(name_tov5_comboBox);
 		

@@ -95,5 +95,24 @@ public class Replacement {
 			   }
 			}
 	}
+	
+	public void textReplaceInTableForVariables (XWPFDocument document, String find_text, String variable)
+	{
+		for (XWPFTable tbl : document.getTables()) {
+			   for (XWPFTableRow row : tbl.getRows()) {
+			      for (XWPFTableCell cell : row.getTableCells()) {
+			         for (XWPFParagraph p : cell.getParagraphs()) {
+			            for (XWPFRun r : p.getRuns()) {
+			              String text = r.getText(0);
+			              if (text != null && text.contains(find_text)) {
+			                text = text.replace(find_text, variable);
+			                r.setText(text,0);
+			              }
+			            }
+			         }
+			      }
+			   }
+			}
+	}
 
 }
