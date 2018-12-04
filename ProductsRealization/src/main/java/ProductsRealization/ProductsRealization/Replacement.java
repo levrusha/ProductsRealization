@@ -50,7 +50,7 @@ public class Replacement {
 		        for (XWPFRun r : runs) {
 		            String text = r.getText(0);
 		            if (text != null && text.contains(find_text)) {
-		                text = text.replace(find_text, textfield.getText());
+		                text = text.replace(find_text, String.format("%.2f", textfield.getText()));
 		                r.setText(text, 0);
 		            }
 		        }
@@ -67,7 +67,7 @@ public class Replacement {
 			            for (XWPFRun r : p.getRuns()) {
 			              String text = r.getText(0);
 			              if (text != null && text.contains(find_text)) {
-			                text = text.replace(find_text, textfield.getText());
+			                text = text.replace(find_text,  textfield.getText());
 			                r.setText(text,0);
 			              }
 			            }

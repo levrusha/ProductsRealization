@@ -139,8 +139,8 @@ public class StartForm extends JFrame {
 				replacement.textReplaceInTable(document, "Phone_pokupatel", Phone_pokupatel_textField);
 				replacement.textReplaceInTable(document, "Cheking_account_pokupatel", Account_pokupatel_textField);
 				replacement.textReplaceInTable(document, "BIK_pokupatel", BIK_pokupatel_textField);
-				replacement.textReplaceInTable(document, "Nomer/n_/ndogovora" , Nomer_dogovora_textField);
-				replacement.textReplaceInTable(document, "Date_dogovor" , Date_dogovor_textField);
+				replacement.textReplaceInTable(document, "DateDog" , Date_dogovor_textField);
+				replacement.textReplaceInTable(document, "NOMDOG" , Nomer_dogovora_textField);
 				replacement.textReplaceInTable(document, "OKPO_Pok" , OKPO_pokupatel_textField);
 				replacement.textReplaceInTableForCombo(document, "Name_tovar_1" , name_tov1_comboBox);
 				replacement.textReplaceInTableForCombo(document, "Name_tovar_2" , name_tov2_comboBox);
