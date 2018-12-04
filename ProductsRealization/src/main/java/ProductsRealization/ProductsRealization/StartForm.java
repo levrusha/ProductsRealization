@@ -132,7 +132,7 @@ public class StartForm extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 				XWPFDocument document = new XWPFDocument(OPCPackage.open("f:/Realization/torg12_template.docx"));
-				FileOutputStream out = new FileOutputStream("f:/Realization/torg12_new.docx");
+				FileOutputStream out = new FileOutputStream("f:/Realization/torg12_№"+Nomer_dogovora_textField.getText()+".docx");
 				Replacement replacement = new Replacement();
 				replacement.textReplaceInTable(document, "Name_pokupatel", Name_pokupatel_textField);
 				replacement.textReplaceInTable(document, "Address_pokupatel", Address_pokupatel_textField);
@@ -286,14 +286,14 @@ public class StartForm extends JFrame {
 					}
 				
 				replacement.textReplaceInTableForVariables(document, "СуммаБезНДС" ,Double.toString(Total_No_NDS));
-				replacement.textReplaceInTableForVariables(document, "Kolvo" ,Double.toString(Kolichestvo));
+				replacement.textReplaceInTableForVariables(document, "Kol" ,Double.toString(Kolichestvo));
 				replacement.textReplaceInTableForVariables(document, "СуммаНДС" ,Double.toString(Total_NDS));
 				replacement.textReplaceInTableForVariables(document, "ОбщаяСумма" ,Double.toString(Total_With_NDS));
 				
 				document.write(out);
 				out.close();
 				if (Desktop.isDesktopSupported()) {
-					   Desktop.getDesktop().open(new File("f:/Realization/torg12_new.docx"));
+					   Desktop.getDesktop().open(new File("f:/Realization/torg12_№"+Nomer_dogovora_textField.getText()+".docx"));
 						}
 				}
 				catch (Exception e1) {
