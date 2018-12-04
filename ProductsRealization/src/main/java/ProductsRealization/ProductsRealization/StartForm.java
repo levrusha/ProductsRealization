@@ -53,6 +53,10 @@ public class StartForm extends JFrame {
 	private JComboBox<String> name_tov3_comboBox;
 	private JComboBox<String> name_tov4_comboBox;
 	private JComboBox<String> name_tov5_comboBox;
+	private double Kolichestvo = 0;
+	private double Total_NDS = 0;
+	private double Total_No_NDS = 0;
+	private double Total_With_NDS = 0;
 
 	/**
 	 * Launch the application.
@@ -135,7 +139,7 @@ public class StartForm extends JFrame {
 				replacement.textReplaceInTable(document, "Phone_pokupatel", Phone_pokupatel_textField);
 				replacement.textReplaceInTable(document, "Cheking_account_pokupatel", Account_pokupatel_textField);
 				replacement.textReplaceInTable(document, "BIK_pokupatel", BIK_pokupatel_textField);
-				replacement.textReplaceInTable(document, "Nomer_dogovora" , Nomer_dogovora_textField);
+				replacement.textReplaceInTable(document, "Nomer/n_/ndogovora" , Nomer_dogovora_textField);
 				replacement.textReplaceInTable(document, "Date_dogovor" , Date_dogovor_textField);
 				replacement.textReplaceInTable(document, "OKPO_Pok" , OKPO_pokupatel_textField);
 				replacement.textReplaceInTableForCombo(document, "Name_tovar_1" , name_tov1_comboBox);
@@ -148,39 +152,58 @@ public class StartForm extends JFrame {
 				replacement.textReplaceInTable(document, "Kol_tov_3" , kol3_textField);
 				replacement.textReplaceInTable(document, "Kol_tov_4" , kol4_textField);
 				replacement.textReplaceInTable(document, "Kol_tov_5" , kol5_textField);
-				replacement.textReplaceInTable(document, "PriceTov1" , price_tov1_textField);
+				replacement.textReplaceInTable(document, "Price_tov_1" , price_tov1_textField);
 				replacement.textReplaceInTable(document, "Price_tov_2" , price_tov2_textField);
 				replacement.textReplaceInTable(document, "Price_tov_3" , price_tov3_textField);
 				replacement.textReplaceInTable(document, "Price_tov_4" , price_tov4_textField);
 				replacement.textReplaceInTable(document, "Price_tov_5" , price_tov5_textField);
 				Calculations calc = new Calculations();
 				
-				if (name_tov1_comboBox.getSelectedItem()!=" ") {
-				String summ_no_nds = "0";
-				replacement.textReplaceInTableForVariables(document, "Total_tov_1-Nds" ,calc.calculateEachSumm(kol1_textField, price_tov1_textField, summ_no_nds));
-				String nds = "0";
-				replacement.textReplaceInTableForVariables(document, "NDS_tov_1" ,calc.calculateEachNDS(kol1_textField, price_tov1_textField, nds));
-				String summ_with_nds = "0";
-				replacement.textReplaceInTableForVariables(document, "Total_tov_1+NDS" ,calc.calculateEachSummWithNDS(kol1_textField, price_tov1_textField, summ_with_nds));
-				} else {
-					String summ_no_nds=" ";
-					replacement.textReplaceInTableForVariables(document, "Total_tov_1-NDS" ,summ_no_nds);
-					String nds = " ";
-					replacement.textReplaceInTableForVariables(document, "NDS_tov_1" ,nds);
-					String summ_with_nds = " ";
-					replacement.textReplaceInTableForVariables(document, "Total_tov_1+NDS" ,summ_with_nds);
-				}
 				
-				if (name_tov2_comboBox.getSelectedItem()!=" ") {
+				if (name_tov1_comboBox.getSelectedItem()!=" ") {
+					
+					Kolichestvo += Double.parseDouble(kol1_textField.getText());
+					
 					String summ_no_nds = "0";
-					replacement.textReplaceInTableForVariables(document, "Total_tov_2-NDS" ,calc.calculateEachSumm(kol2_textField, price_tov2_textField, summ_no_nds));
+					replacement.textReplaceInTableForVariables(document, "T1NONDS" ,calc.calculateEachSumm(kol1_textField, price_tov1_textField, summ_no_nds));
+					Total_No_NDS += Double.parseDouble(calc.calculateEachSumm(kol1_textField, price_tov1_textField, summ_no_nds));
+					
 					String nds = "0";
-					replacement.textReplaceInTableForVariables(document, "NDS_tov_2" ,calc.calculateEachNDS(kol2_textField, price_tov2_textField, nds));
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_1" , calc.calculateEachNDS(kol1_textField, price_tov1_textField, nds));
+					Total_NDS += Double.parseDouble(calc.calculateEachNDS(kol1_textField, price_tov1_textField, nds));
+					
 					String summ_with_nds = "0";
-					replacement.textReplaceInTableForVariables(document, "Total_tov_2+NDS" ,calc.calculateEachSummWithNDS(kol2_textField, price_tov2_textField, summ_with_nds));
+					replacement.textReplaceInTableForVariables(document, "Total_tov_1+NDS" ,calc.calculateEachSummWithNDS(kol1_textField, price_tov1_textField, summ_with_nds));
+					Total_With_NDS += Double.parseDouble(calc.calculateEachSummWithNDS(kol1_textField, price_tov1_textField, summ_with_nds));
+					
 					} else {
 						String summ_no_nds=" ";
-						replacement.textReplaceInTableForVariables(document, "Total_tov_2-NDS" ,summ_no_nds);
+						replacement.textReplaceInTableForVariables(document, "T1NONDS" ,summ_no_nds);
+						String nds = " ";
+						replacement.textReplaceInTableForVariables(document, "NDS_tov_1" ,nds);
+						String summ_with_nds = " ";
+						replacement.textReplaceInTableForVariables(document, "Total_tov_1+NDS" ,summ_with_nds);
+					}
+				
+				if (name_tov2_comboBox.getSelectedItem()!=" ") {
+					
+					Kolichestvo += Double.parseDouble(kol2_textField.getText());
+					
+					String summ_no_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "T2NONDS" ,calc.calculateEachSumm(kol2_textField, price_tov2_textField, summ_no_nds));
+					Total_No_NDS += Double.parseDouble(calc.calculateEachSumm(kol2_textField, price_tov2_textField, summ_no_nds));
+					
+					String nds = "0";
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_2" , calc.calculateEachNDS(kol2_textField, price_tov2_textField, nds));
+					Total_NDS += Double.parseDouble(calc.calculateEachNDS(kol2_textField, price_tov2_textField, nds));
+					
+					String summ_with_nds = "0";
+					replacement.textReplaceInTableForVariables(document, "Total_tov_2+NDS" ,calc.calculateEachSummWithNDS(kol2_textField, price_tov2_textField, summ_with_nds));
+					Total_With_NDS += Double.parseDouble(calc.calculateEachSummWithNDS(kol2_textField, price_tov2_textField, summ_with_nds));
+					
+					} else {
+						String summ_no_nds=" ";
+						replacement.textReplaceInTableForVariables(document, "T2NONDS" ,summ_no_nds);
 						String nds = " ";
 						replacement.textReplaceInTableForVariables(document, "NDS_tov_2" ,nds);
 						String summ_with_nds = " ";
@@ -188,15 +211,24 @@ public class StartForm extends JFrame {
 					}
 				
 				if (name_tov3_comboBox.getSelectedItem()!=" ") {
+					
+					Kolichestvo += Double.parseDouble(kol3_textField.getText());
+					
 					String summ_no_nds = "0";
-					replacement.textReplaceInTableForVariables(document, "Total_tov_3-NDS" ,calc.calculateEachSumm(kol3_textField, price_tov3_textField, summ_no_nds));
+					replacement.textReplaceInTableForVariables(document, "T3NONDS" ,calc.calculateEachSumm(kol3_textField, price_tov3_textField, summ_no_nds));
+					Total_No_NDS += Double.parseDouble(calc.calculateEachSumm(kol3_textField, price_tov3_textField, summ_no_nds));
+					
 					String nds = "0";
-					replacement.textReplaceInTableForVariables(document, "NDS_tov_3" ,calc.calculateEachNDS(kol3_textField, price_tov3_textField, nds));
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_3" , calc.calculateEachNDS(kol3_textField, price_tov3_textField, nds));
+					Total_NDS += Double.parseDouble(calc.calculateEachNDS(kol3_textField, price_tov3_textField, nds));
+					
 					String summ_with_nds = "0";
 					replacement.textReplaceInTableForVariables(document, "Total_tov_3+NDS" ,calc.calculateEachSummWithNDS(kol3_textField, price_tov3_textField, summ_with_nds));
+					Total_With_NDS += Double.parseDouble(calc.calculateEachSummWithNDS(kol3_textField, price_tov3_textField, summ_with_nds));
+					
 					} else {
 						String summ_no_nds=" ";
-						replacement.textReplaceInTableForVariables(document, "Total_tov_3-NDS" ,summ_no_nds);
+						replacement.textReplaceInTableForVariables(document, "T3NONDS" ,summ_no_nds);
 						String nds = " ";
 						replacement.textReplaceInTableForVariables(document, "NDS_tov_3" ,nds);
 						String summ_with_nds = " ";
@@ -204,15 +236,24 @@ public class StartForm extends JFrame {
 					}
 				
 				if (name_tov4_comboBox.getSelectedItem()!=" ") {
+					
+					Kolichestvo += Double.parseDouble(kol4_textField.getText());
+					
 					String summ_no_nds = "0";
-					replacement.textReplaceInTableForVariables(document, "Total_tov_4-NDS" ,calc.calculateEachSumm(kol4_textField, price_tov4_textField, summ_no_nds));
+					replacement.textReplaceInTableForVariables(document, "T4NONDS" ,calc.calculateEachSumm(kol4_textField, price_tov4_textField, summ_no_nds));
+					Total_No_NDS += Double.parseDouble(calc.calculateEachSumm(kol4_textField, price_tov4_textField, summ_no_nds));
+					
 					String nds = "0";
-					replacement.textReplaceInTableForVariables(document, "NDS_tov_4" ,calc.calculateEachNDS(kol1_textField, price_tov4_textField, nds));
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_4" , calc.calculateEachNDS(kol4_textField, price_tov4_textField, nds));
+					Total_NDS += Double.parseDouble(calc.calculateEachNDS(kol4_textField, price_tov4_textField, nds));
+					
 					String summ_with_nds = "0";
 					replacement.textReplaceInTableForVariables(document, "Total_tov_4+NDS" ,calc.calculateEachSummWithNDS(kol4_textField, price_tov4_textField, summ_with_nds));
+					Total_With_NDS += Double.parseDouble(calc.calculateEachSummWithNDS(kol4_textField, price_tov4_textField, summ_with_nds));
+					
 					} else {
 						String summ_no_nds=" ";
-						replacement.textReplaceInTableForVariables(document, "Total_tov_4-NDS" ,summ_no_nds);
+						replacement.textReplaceInTableForVariables(document, "T4NONDS" ,summ_no_nds);
 						String nds = " ";
 						replacement.textReplaceInTableForVariables(document, "NDS_tov_4" ,nds);
 						String summ_with_nds = " ";
@@ -220,39 +261,35 @@ public class StartForm extends JFrame {
 					}
 				
 				if (name_tov5_comboBox.getSelectedItem()!=" ") {
+					
+					Kolichestvo += Double.parseDouble(kol5_textField.getText());
+					
 					String summ_no_nds = "0";
-					replacement.textReplaceInTableForVariables(document, "Total_tov_5-NDS" ,calc.calculateEachSumm(kol5_textField, price_tov5_textField, summ_no_nds));
+					replacement.textReplaceInTableForVariables(document, "T5NONDS" ,calc.calculateEachSumm(kol5_textField, price_tov5_textField, summ_no_nds));
+					Total_No_NDS += Double.parseDouble(calc.calculateEachSumm(kol5_textField, price_tov5_textField, summ_no_nds));
+					
 					String nds = "0";
-					replacement.textReplaceInTableForVariables(document, "NDS_tov_5" ,calc.calculateEachNDS(kol5_textField, price_tov5_textField, nds));
+					replacement.textReplaceInTableForVariables(document, "NDS_tov_5" , calc.calculateEachNDS(kol5_textField, price_tov5_textField, nds));
+					Total_NDS += Double.parseDouble(calc.calculateEachNDS(kol5_textField, price_tov5_textField, nds));
+					
 					String summ_with_nds = "0";
 					replacement.textReplaceInTableForVariables(document, "Total_tov_5+NDS" ,calc.calculateEachSummWithNDS(kol5_textField, price_tov5_textField, summ_with_nds));
+					Total_With_NDS += Double.parseDouble(calc.calculateEachSummWithNDS(kol5_textField, price_tov5_textField, summ_with_nds));
+					
 					} else {
 						String summ_no_nds=" ";
-						replacement.textReplaceInTableForVariables(document, "Total_tov_5-NDS" ,summ_no_nds);
+						replacement.textReplaceInTableForVariables(document, "T5NONDS" ,summ_no_nds);
 						String nds = " ";
 						replacement.textReplaceInTableForVariables(document, "NDS_tov_5" ,nds);
 						String summ_with_nds = " ";
 						replacement.textReplaceInTableForVariables(document, "Total_tov_5+NDS" ,summ_with_nds);
 					}
-				/*replacement.textReplaceInTable(document, "Total_tov_1-NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_2-NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_3-NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_4-NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_5-NDS" , textField);
-				replacement.textReplaceInTable(document, "Total-NDS" , textField);
-				replacement.textReplaceInTable(document, "NDS_tov_1" , textField);
-				replacement.textReplaceInTable(document, "NDS_tov_2" , textField);
-				replacement.textReplaceInTable(document, "NDS_tov_3" , textField);
-				replacement.textReplaceInTable(document, "NDS_tov_4" , textField);
-				replacement.textReplaceInTable(document, "NDS_tov_5" , textField);
-				replacement.textReplaceInTable(document, "Total_NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_1+NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_2+NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_3+NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_4+NDS" , textField);
-				replacement.textReplaceInTable(document, "Total_tov_5+NDS" , textField);
-				replacement.textReplaceInTable(document, "Total+NDS" , textField);
-				*/
+				
+				replacement.textReplaceInTableForVariables(document, "СуммаБезНДС" ,Double.toString(Total_No_NDS));
+				replacement.textReplaceInTableForVariables(document, "Kolvo" ,Double.toString(Kolichestvo));
+				replacement.textReplaceInTableForVariables(document, "СуммаНДС" ,Double.toString(Total_NDS));
+				replacement.textReplaceInTableForVariables(document, "ОбщаяСумма" ,Double.toString(Total_With_NDS));
+				
 				document.write(out);
 				out.close();
 				if (Desktop.isDesktopSupported()) {
@@ -262,6 +299,7 @@ public class StartForm extends JFrame {
 				catch (Exception e1) {
 						System.out.println(e1);
 				}
+				
 			}
 		});
 		generate_Button.setBounds(373, 338, 235, 33);
